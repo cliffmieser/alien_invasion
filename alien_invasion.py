@@ -2,21 +2,28 @@
 
 #importing sys and pygame. pygame module contains import functionality for the game
 #sys module holds tools to exit the game when a player quits
-import sys 
-import pygame
+import sys
+import pygame 
 
-class AlianInvasion:
+from settings import Settings
+
+class AlienInvasion:
 
     """Overall class to manage game assets and behaviors"""
 
     def __init__(self):
         """Initialize game, and create game resources."""
         pygame.init() #initializes background settings for pygame to work properly
+        self.settings = Settings() #isntance of Settings 
 
-        #The object assigned to self.screen can be refered as a surface, which is a part of the screen where a game element 
+        #The object assigned to self.screen can be refered as a surface, which is a part of the screen where a game element
         #will be displayed in pygame
-        self.screen = pygame.display.set_mode((1200, 800)) #creates a display window in which all graphic elements are drawn                                                
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height)) #creates a display window in which all graphic elements are drawn
         pygame.display.set_caption("Alien Invasion")
+
+        #set background color
+        self.bg_color = (230, 230, 230)
 
 
     def run_game(self):
@@ -25,9 +32,12 @@ class AlianInvasion:
         while True:
             # watch for keyboard and mouse events.
             #An event is an action that the use performs while playing the game
-            for event in pygame.event.get():
+            for event in pygame.event.get():  # an event loop that listens for events to peform the appropriate tasks
                 if event.type == pygame.QUIT():
                     sys.exit()
+
+            #Redraw the screen during each pass through the loop. 
+            self.screen.fill(self.settings.bg_color)
 
             # Make the most recently drawn screen visible
             pygame.display.flip()
