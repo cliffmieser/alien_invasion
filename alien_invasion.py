@@ -34,7 +34,7 @@ class AlienInvasion:
             # watch for keyboard and mouse events.
             #An event is an action that the use performs while playing the game
             for event in pygame.event.get():  # an event loop that listens for events to peform the appropriate tasks
-                if event.type == pygame.QUIT():
+                if event.type == pygame.QUIT:
                     sys.exit()
 
             #Redraw the screen during each pass through the loop. 
