@@ -1,0 +1,59 @@
+[33mcommit ae5642e4977321ca0cd813288342da97bacef1c9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Wed May 19 15:49:18 2021 -0400
+
+    Added custom ship; refactoring code
+
+[33mcommit 1b26305d0ab1128686a519f0cb70000a46b94428[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Wed May 19 15:27:10 2021 -0400
+
+    Change screen height and width to fit virtual machine
+
+[33mcommit b4519900972a9c4f8a1920babcd3bcc5e7c563d4[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Wed May 19 14:55:14 2021 -0400
+
+    syntax fixes
+
+[33mcommit f66211aa13d98b168e5cbf77038585137854678f[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Wed May 19 14:47:04 2021 -0400
+
+    Added moduleship.py and modified alien_invasion.py
+
+[33mcommit 619f98f58bc26493cff5befa777581936f9ff403[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Wed May 19 14:32:42 2021 -0400
+
+    added ship.bmp
+
+[33mcommit 94d18a52fc6c38bdf27f095db239a5d75e4242ba[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Mon May 17 22:47:38 2021 -0400
+
+    Added settings module and updated alien_invasion.py
+
+[33mcommit 42a9de93f7b772c217f8bd70ad613ea8a354d565[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Mon May 17 19:25:14 2021 -0400
+
+    Adding alien_invasion.py
+
+[33mcommit f24e52c8e8387854fb87f167e256e1c38f4fc12c[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Mon May 17 19:03:39 2021 -0400
+
+    General planfor project
+
+[33mcommit d6cc3367dc99625128dfcc37d85a792f7bf6c3ae[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Mon May 17 18:43:16 2021 -0400
+
+    updated readme
+
+[33mcommit fc66a7aeb392e59614c8f48fa15e278a1f344133[m
+Author: cliffmieser <cliffmieser@gmail.com>
+Date:   Mon May 17 18:40:34 2021 -0400
+
+    First commit for alien invasion project
