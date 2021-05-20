@@ -15,7 +15,7 @@ class AlienInvasion:
     def __init__(self):
         """Initialize game, and create game resources."""
         pygame.init() #initializes background settings for pygame to work properly
-        
+
 
         self.settings = Settings() #isntance of Settings 
 
@@ -26,8 +26,6 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
-
-
 
     def run_game(self):
         """Start the main loop for the game."""
