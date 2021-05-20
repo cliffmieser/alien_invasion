@@ -15,6 +15,8 @@ class AlienInvasion:
     def __init__(self):
         """Initialize game, and create game resources."""
         pygame.init() #initializes background settings for pygame to work properly
+        
+
         self.settings = Settings() #isntance of Settings 
 
         #The object assigned to self.screen can be refered as a surface, which is a part of the screen where a game element
@@ -81,3 +83,5 @@ if __name__ == '__main__':
 
     ai = AlienInvasion()
     ai.run_game()
+
+
