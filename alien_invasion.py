@@ -22,9 +22,9 @@ class AlienInvasion:
 
         #The object assigned to self.screen can be refered as a surface, which is a part of the screen where a game element
         #will be displayed in pygame
-        self.screen = pygame.display.set_mode((0,0 ), pygame.FULLSCREEN) #creates a display window in which all graphic elements are drawn
-        self.settings.screen_width = self.screen.get_rect().width 
-        self.settings.screen_height = self.screen.get_rect().height
+        #self.screen = pygame.display.set_mode((0,0 ), pygame.FULLSCREEN) #creates a display window in which all graphic elements are drawn
+
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
@@ -36,10 +36,8 @@ class AlienInvasion:
         while True:
             self._check_events() #calls the _check_events method
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
-
-
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -77,8 +75,19 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bulet and add it to the bullets group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+        #update bullet postions.
+        self.bullets.update()
+        #get rid of bullets that have dissappeared
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        print(len(self.bullets))
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
