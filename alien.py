@@ -14,8 +14,9 @@ class Alien(Sprite):
         #picture  = pygame.image.load('images/EnemyShip.bmp')
         #picture = pygame.transform.scale(picture, (800, 800))
 
-        
-        self.image = pygame.image.load('images/EnemyShipTwo.bmp')
+        picture = pygame.image.load('images/EnemyShipTwo.bmp')
+        picture = pygame.transform.scale(picture, (130,80))
+        self.image = picture
         self.rect = self.image.get_rect()
 
         #Start each new alien near the top lef tof the screen
