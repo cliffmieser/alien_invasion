@@ -4,8 +4,10 @@
 #sys module holds tools to exit the game when a player quits
 import sys
 import pygame 
+from time import sleep
 
 from ship import Ship
+from game_stats import GameStats
 from settings import Settings
 from bullet import Bullet
 from alien import Alien
@@ -28,6 +30,9 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
 
+        #Create an instance to store game statistics.
+        self.stats = GameStats(self)
+
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group() #stores bullets in a group
         self.aliens = pygame.sprite.Group()
@@ -41,6 +46,7 @@ class AlienInvasion:
             self._check_events() #calls the _check_events method
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _check_events(self):
@@ -92,6 +98,28 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         print(len(self.bullets))
+        self._check_bullet_alien_collisions()
+
+
+    def _check_bullet_alien_collisions(self):
+        collisions = pygame.sprite.pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if not self.aliens:
+            #Destroy eixisting bullets and create a new fleet
+            self.bullets.empty()
+            self._create_fleet()
+
+
+    def _update_aliens(self):
+        """Check if fleet is at an edge, then update position of all aliens """
+        self._check_fleet_edges()
+        self.aliens.update()
+
+        #Look for alien-ship collisions
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("Ship hit!!!")
+
+
 
     def _create_fleet(self):
         """Create the fleet of aliens"""
@@ -122,6 +150,20 @@ class AlienInvasion:
         alien.rect.x = alien.x
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number 
         self.aliens.add(alien)
+    
+    def _check_fleet_edges(self):
+        """Respond appropriately if any aliens reach an edge """
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+    
+
+    def _change_fleet_direction(self):
+        """Drop entire fleet and change fleet's direction"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
